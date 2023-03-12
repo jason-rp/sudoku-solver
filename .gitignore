@@ -4,3 +4,7 @@
 
 /src/backend/SudokuSolver/SudokuApi/bin/Debug/net6.0
 /src/backend/SudokuSolver/SudokuApi/obj
+/src/backend/SudokuSolver/Sudoku.API/bin/Debug/net6.0
+/src/backend/SudokuSolver/.vs/SudokuSolver/config
+/src/backend/SudokuSolver/.vs/SudokuSolver/DesignTimeBuild
+/src/backend/SudokuSolver/Sudoku.API/obj
