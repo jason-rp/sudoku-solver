@@ -20,10 +20,27 @@ solveBtn.addEventListener("click", () => {
   // Solve sudoku
   const solution = solveSudoku(inputMatrix);
 
+  debugger;
   if (!solution) {
     error.textContent =
       "No solution found. Please check your entries and try again.";
     return;
+  }
+  else  
+  {
+    var puzzle = solution.flat().join('');
+    $.ajax({
+      url: 'https://localhost:7130/api/sudokus',
+      type: 'POST',
+      data: JSON.stringify({ board: puzzle }),
+      contentType: 'application/json',
+      success: function(data) {
+        console.log('Sudoku solved:', data);
+      },
+      error: function(xhr, status, error) {
+        console.error('Error solving Sudoku:', error);
+      }
+    });
   }
 
   for (let i = 0; i < inputNodes.length; i++) {
@@ -31,6 +48,11 @@ solveBtn.addEventListener("click", () => {
   }
 
   error.textContent = "";
+
+
+
+
+
 });
 
 // Utility functions
