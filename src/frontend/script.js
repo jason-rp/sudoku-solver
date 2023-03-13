@@ -20,7 +20,6 @@ solveBtn.addEventListener("click", () => {
   // Solve sudoku
   const solution = solveSudoku(inputMatrix);
 
-  debugger;
   if (!solution) {
     error.textContent =
       "No solution found. Please check your entries and try again.";
@@ -48,10 +47,6 @@ solveBtn.addEventListener("click", () => {
   }
 
   error.textContent = "";
-
-
-
-
 
 });
 

@@ -9,5 +9,7 @@ namespace Sudoku.API.Models.Dto
         public string Board { get; set; }
 
         public DateTime SolvedDateTime { get; set; }
+
+        public string SolvedDate { get; set; }
     }
 }

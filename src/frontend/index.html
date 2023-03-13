@@ -5,6 +5,12 @@
     <title>Sudoku Solver</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DevExtreme -->
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/20.2.6/css/dx.common.css" />
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/20.2.6/css/dx.light.css" />
+    <script src="https://cdn3.devexpress.com/jslib/20.2.6/js/dx.all.js"></script>
+
   </head>
   <body>
     <div class="container" >
@@ -115,8 +121,51 @@
       <button id="solve">Solve</button>
       <p id="error" class="error-msg"></p>
     </div>
-    
+    <div><fieldset>
+      <legend>Sudoku History</legend>
+    </fieldset></div>
+    <div id="gridContainer" class="sudoku-gridContainer">
+    </div>
+    <div class="sudoku-footer"></div>
     <script src="script.js"></script>
+    <script>
+      $(function() {
+    $.ajax({
+        url: "https://localhost:7130/api/sudokus",
+        type: "GET",
+        success: function(data) {
+            $("#gridContainer").dxDataGrid({
+                dataSource: data.result,
+                hoverStateEnabled: true,
+                height: 300,
+                headerFilter: {
+                  visible: true
+                },
+                paging: {
+                  pageSize: 5
+                },
+                columns: [
+                  { dataField: "sudokuHistoryId", caption: "ID", width: 50 },
+                  { dataField: "board", caption: "Board", width: 200 },
+                  { dataField: "solvedDate", caption: "Solved Date"}
+                ],
+                rowAlternationEnabled: true,
+                rowHeight: 30,
+                font: { family: "Georgia", size: 12 },
+                headerFilter: {
+                  visible: true,
+                  backgroundColor: '#f7f7f7'
+                },
+                rowAlternationColor: '#f7f7f7',
+                showBorders: true,
+                });
+        },
+        error: function() {
+            console.log("Error retrieving data from API.");
+        }
+        });
+    });
+    </script>
     </script>
   </body>
 </html>

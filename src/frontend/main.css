@@ -53,7 +53,6 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Button */
 button {
   background-color: #4caf50;
   color: white;
@@ -76,4 +75,19 @@ button:hover {
 .sudoku-title {
   color: brown;
   font-family: fantasy;
+}
+fieldset {
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 0px;
+}
+legend {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: crimson;
+  margin: 20px;
+}
+.sudoku-footer{
+  margin:100px;
 }

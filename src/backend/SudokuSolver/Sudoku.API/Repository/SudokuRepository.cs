@@ -35,7 +35,13 @@ namespace Sudoku.API.Repository
         public async Task<IEnumerable<SudokuDto>> GetSudokusAsync()
         {
             var sudokuHistories = await _context.Sudokus.ToListAsync();
-            return _mapper.Map<List<SudokuDto>>(sudokuHistories);
+            var result = sudokuHistories.Select(n => new SudokuDto
+            {
+                SudokuHistoryId = n.SudokuHistoryId,
+                Board = n.Board,
+                SolvedDate = n.SolvedDateTime.ToShortDateString(),
+            });
+            return result;
         }
     }
 }
